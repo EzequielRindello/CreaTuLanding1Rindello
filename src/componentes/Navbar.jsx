@@ -1,12 +1,13 @@
 import React from "react";
 import "../estilos/Navbar.css";
 import CartWidget from "./CartWidget";
+import casioLogo from "../imagenes/casio-logo.webp";
 
 const Navbar = () => {
   return (
     <div>
       <nav className="nav">
-        <img src="" alt="Logo" className="logo" />
+        <img src={casioLogo} alt="Logo" className="logo" />
         <ul className="nav-links">
           <li>
             <a href="/">Inicio</a>

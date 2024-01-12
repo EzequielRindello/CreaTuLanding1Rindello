@@ -3,7 +3,7 @@ import "../estilos/ItemListContainer.css";
 
 const ItemListContainer = ({ texto }) => {
   return (
-    <div>
+    <div className="list-container">
       <h2>{texto}</h2>
     </div>
   );
