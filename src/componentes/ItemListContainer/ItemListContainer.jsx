@@ -1,5 +1,5 @@
 import React from "react";
-import "../estilos/ItemListContainer.css";
+import "./ItemListContainer.css";
 
 const ItemListContainer = ({ texto }) => {
   return (

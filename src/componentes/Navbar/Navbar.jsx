@@ -1,7 +1,7 @@
 import React from "react";
-import "../estilos/Navbar.css";
-import CartWidget from "./CartWidget";
-import casioLogo from "../imagenes/casio-logo.webp";
+import "./Navbar.css";
+import CartWidget from "../CartWidget/CartWidget"
+import casioLogo from "../../imagenes/casio-logo.webp";
 
 const Navbar = () => {
   return (

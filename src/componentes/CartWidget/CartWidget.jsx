@@ -1,5 +1,5 @@
 import React from "react";
-import "../estilos/Navbar.css"
+import "../Navbar/Navbar.css"
 
 const CartWidget = () => {
   return (

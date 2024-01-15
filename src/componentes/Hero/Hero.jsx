@@ -1,6 +1,6 @@
 import React from "react";
-import "../estilos/Hero.css";
-import url from "../imagenes/casio-banner.webp";
+import "./Hero.css";
+import url from "../../imagenes/casio-banner.webp";
 
 const Hero = ({ alt }) => {
   return (
