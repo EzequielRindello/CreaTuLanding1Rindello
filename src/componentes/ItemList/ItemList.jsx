@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import Item from "../Item/Item";
+import "./ItemList.css";
 
-const ItemList = () => {
+const ItemList = ({ products }) => {
   return (
-    <div>ItemList</div>
-  )
-}
+    <div className="grid">
+      {products.map((item) => (
+        <Item key={item.id} {...item} />
+      ))}
+    </div>
+  );
+};
 
-export default ItemList
+export default ItemList;
