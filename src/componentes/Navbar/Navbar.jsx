@@ -1,25 +1,28 @@
 import React from "react";
 import "./Navbar.css";
-import CartWidget from "../CartWidget/CartWidget"
+import CartWidget from "../CartWidget/CartWidget";
 import casioLogo from "../../imagenes/casio-logo.webp";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div>
       <nav className="nav">
-        <img src={casioLogo} alt="Logo" className="logo" />
+        <Link to="/">
+          <img src={casioLogo} alt="Logo" className="logo" />
+        </Link>
         <ul className="nav-links">
           <li>
-            <a href="/">Inicio</a>
+            <Link to="/">Inicio</Link>
           </li>
           <li>
-            <a href="/g-shock">G-shock</a>
+            <Link to="/g-shock">G-shock</Link>
           </li>
           <li>
-            <a href="/pro-trek">Pro trek</a>
+            <Link to="/pro-trek">Pro trek</Link>
           </li>
           <li>
-            <a href="/casio">Casio</a>
+            <Link to="/casio">Casio</Link>
           </li>
         </ul>
         <div>

@@ -4,14 +4,12 @@ import "./ItemListContainer.css";
 import { useState, useEffect } from "react";
 import productos from "../../relojes.json";
 
-const ItemListContainer = ({ texto }) => {
+const ItemListContainer = () => {
   const [relojes, setRelojes] = useState([]);
 
   const fetchData = () =>
     new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(productos.relojes);
-      }, 2000);
+      resolve(productos.relojes);
     });
   useEffect(() => {
     fetchData()
@@ -21,7 +19,7 @@ const ItemListContainer = ({ texto }) => {
 
   return (
     <div className="list-container">
-      <h2>{texto}</h2>
+      <h2>Nuestros productos</h2>
       <ItemList products={relojes}></ItemList>
     </div>
   );
