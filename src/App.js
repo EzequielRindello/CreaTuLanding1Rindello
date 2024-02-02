@@ -4,7 +4,6 @@ import ItemListContainer from "./componentes/ItemListContainer/ItemListContainer
 import ItemDetailContainer from "./componentes/ItemDetailContainer/ItemDetailContainer"
 import Navbar from "./componentes/Navbar/Navbar";
 import Hero from "./componentes/Hero/Hero";
-import ComponentWithRouteParams from "./componentes/ComponentWithRouteParams/ComponentWithRouteParams"
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
         <Route path="/" element={<ItemListContainer />} />
         <Route path="/category/:categoryId" element={<ItemListContainer />} />
         <Route path="/item/:itemId" element={<ItemDetailContainer />} />
-        <Route path="/user/:userId" element={<ComponentWithRouteParams />} />
         <Route path="*" element={<h1>Error 404</h1>} />
       </Routes>
     </div>

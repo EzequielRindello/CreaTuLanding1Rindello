@@ -12,12 +12,16 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
         <img src={img} alt={name} className="item-img" />
       </picture>
       <section>
-        <p className="info">{category}</p>
-        <p className="info">{description}</p>
-        <p className="info">{price}</p>
+        <p className="info">Categoria: {category}</p>
+        <p className="info">Descripcion:{description}</p>
+        <p className="info">Price: {price}</p>
       </section>
       <footer className="item-footer">
-        <ItemCount initial={1} stock={stock} onAdd={(quantity) => console.log("cantidad agregada",quantity )}/>
+        <ItemCount
+          initial={1}
+          stock={stock}
+          onAdd={(quantity) => console.log("cantidad agregada", quantity)}
+        />
       </footer>
     </article>
   );

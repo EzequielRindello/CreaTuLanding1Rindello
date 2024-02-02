@@ -2,7 +2,7 @@ import React from "react";
 import "./Navbar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import casioLogo from "../../imagenes/casio-logo.webp";
-import { Link } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -11,20 +11,11 @@ const Navbar = () => {
         <Link to="/">
           <img src={casioLogo} alt="Logo" className="logo" />
         </Link>
-        <ul className="nav-links">
-          <li>
-            <Link to="/">Inicio</Link>
-          </li>
-          <li>
-            <Link to="/category/g-shock">G-shock</Link>
-          </li>
-          <li>
-            <Link to="/category/pro-trek">Pro trek</Link>
-          </li>
-          <li>
-            <Link to="/category/casio">Casio</Link>
-          </li>
-        </ul>
+        <div className="categorias"> 
+          <NavLink to={`category/ga`} className={({isActive}) => isActive ? "activate-option": "option"}>G-shock</NavLink>
+          <NavLink to={`category/pro`} className={({isActive}) => isActive ? "activate-option": "option"}>Pro trek</NavLink>
+          <NavLink to={`category/casio`} className={({isActive}) => isActive ? "activate-option": "option"}>Casio</NavLink>
+        </div>
         <div>
           <CartWidget />
         </div>

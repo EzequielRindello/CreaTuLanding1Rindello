@@ -1,28 +1,31 @@
 // ItemListContainer.js
 import ItemList from "../ItemList/ItemList";
 import "./ItemListContainer.css";
-import { useState, useEffect } from "react";
-import productos from "../../relojes.json";
+import { useState, useEffect} from "react";
+import { getProductByCategory, getProducts } from "../../asyncMock.js";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = () => {
-  const [relojes, setRelojes] = useState([]);
+  const [products, setProducts] = useState([]);
 
-  const fetchData = () =>
-    new Promise((resolve, reject) => {
-      resolve(productos.relojes);
-    });
+  const { categoryId } = useParams();
+
   useEffect(() => {
-    fetchData()
-      .then((res) => setRelojes(res))
-      .catch((err) => console.error(err));
-  }, []);
+    const asyncFuntion = categoryId ? getProductByCategory : getProducts;
 
-  // logica para obtener mediante useParams() si existe tal categoria que muestre la lista filtrada
+    asyncFuntion(categoryId)
+      .then((response) => {
+        setProducts(response);
+      })
+      .catch((error) => {
+        console.error();
+      });
+  },[categoryId]);
 
   return (
     <div className="list-container">
       <h2>Nuestros productos</h2>
-      <ItemList products={relojes}></ItemList>
+      <ItemList products={products}></ItemList>
     </div>
   );
 };
