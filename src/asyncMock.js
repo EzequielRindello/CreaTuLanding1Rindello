@@ -53,10 +53,17 @@ const products = {
 
 export const getProducts = () => {
   return new Promise((resolve) => {
-    resolve(products)
-    console.log(products)
-  })
-}
+    const resolvedProducts = products.relojes;
+    if (Array.isArray(resolvedProducts)) {
+      resolve(resolvedProducts);
+      console.log("getProducts Response:", resolvedProducts);
+    } else {
+      console.error("Products is not an array:", resolvedProducts);
+      resolve([]);
+    }
+  });
+};
+
 
 export const getProductById = (productId) => {
   return new Promise((resolve) => {
@@ -66,6 +73,6 @@ export const getProductById = (productId) => {
 
 export const getProductByCategory = (categoryId) => {
   return new Promise((resolve) => {
-    resolve(products.find(prod => prod.category === categoryId))
-  })
-}
+    resolve(products.filter(prod => prod.category === categoryId));
+  });
+};

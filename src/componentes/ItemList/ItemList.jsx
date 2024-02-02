@@ -5,9 +5,8 @@ import "./ItemList.css";
 const ItemList = ({ products }) => {
   return (
     <div className="grid">
-      {products.map((item) => (
-        <Item key={item.id} {...item} />
-      ))}
+      {Array.isArray(products) &&
+        products.map((item) => <Item key={item.id} {...item} />)}
     </div>
   );
 };
