@@ -1,4 +1,3 @@
-
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import ItemListContainer from "./componentes/ItemListContainer/ItemListContainer";
@@ -10,18 +9,15 @@ import ComponentWithRouteParams from "./componentes/ComponentWithRouteParams/Com
 function App() {
   return (
     <div className="App">
-
       <Navbar />
-      <Hero
-        alt="casio banner" />
+      <Hero alt="casio banner" />
       <Routes>
         <Route path="/" element={<ItemListContainer />} />
         <Route path="/category/:categoryId" element={<ItemListContainer />} />
-        <Route path="/item" element={<ItemDetailContainer />} />
+        <Route path="/item/:itemId" element={<ItemDetailContainer />} />
         <Route path="/user/:userId" element={<ComponentWithRouteParams />} />
         <Route path="*" element={<h1>Error 404</h1>} />
       </Routes>
-
     </div>
   );
 }

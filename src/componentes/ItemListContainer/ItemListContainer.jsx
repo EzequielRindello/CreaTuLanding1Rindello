@@ -17,6 +17,8 @@ const ItemListContainer = () => {
       .catch((err) => console.error(err));
   }, []);
 
+  // logica para obtener mediante useParams() si existe tal categoria que muestre la lista filtrada
+
   return (
     <div className="list-container">
       <h2>Nuestros productos</h2>
