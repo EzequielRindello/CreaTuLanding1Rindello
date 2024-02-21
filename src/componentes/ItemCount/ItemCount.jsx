@@ -12,7 +12,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   };
 
   const decrement = () => {
-    if (quantity > stock) {
+    if (quantity > 1) {
       setQuantity(quantity - 1);
     }
   };
@@ -30,9 +30,12 @@ const ItemCount = ({ stock, initial, onAdd }) => {
       <div>
         <button
           className="btn"
+          id="cart-btn"
           onClick={() => onAdd(quantity)}
           disabled={!stock}
-        >Agregar al carrito</button>
+        >
+          Agregar al carrito
+        </button>
       </div>
     </div>
   );

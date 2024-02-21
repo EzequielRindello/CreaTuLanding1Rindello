@@ -1,13 +1,23 @@
-img{
-    width: 250px;
+article img {
+  width: 220px;
+  transition: 1s ease;
 }
 
-article{
-    background-color: #fff;
-    border: 1px solid #d0d0d0;
-    border-radius: 5px;
-    width: 100%; 
-    height: 100%;
-    display: grid;
-    place-items: center;
+article img:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: 1s ease;
+}
+
+article {
+  background-color: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 20px;
 }

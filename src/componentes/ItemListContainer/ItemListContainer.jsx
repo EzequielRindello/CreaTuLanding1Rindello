@@ -10,20 +10,19 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     const asyncFunction = categoryId ? getProductByCategory : getProducts;
-  
+
     asyncFunction(categoryId)
       .then((response) => {
-        console.log("Item list container Response:", response);
         setProducts(response);
       })
       .catch((error) => {
         console.error(error);
       });
   }, [categoryId]);
-  
+
   return (
     <div className="list-container">
-      <h2>Nuestros productos</h2>
+      <h1>Nuestros productos</h1>
       {products.length === 0 ? (
         <p>Loading...</p>
       ) : (
