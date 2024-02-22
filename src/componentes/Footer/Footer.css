@@ -1,0 +1,14 @@
+.footer-container {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 50px;
+}
+
+@media (max-width: 840px) {
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

@@ -7,6 +7,7 @@ import Hero from "./componentes/Hero/Hero";
 import { collection, getDocs, getFirestore, limit, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { app } from "./index"
+import Footer from "./componentes/Footer/Footer";
 
 function App() {
 
@@ -51,6 +52,8 @@ function App() {
         <Route path="/item/:itemId" element={<ItemDetailContainer />} />
         <Route path="*" element={<h1>Error 404</h1>} />
       </Routes>
+      <hr></hr>
+      <Footer />
     </div>
   );
 }
