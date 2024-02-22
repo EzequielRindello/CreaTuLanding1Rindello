@@ -34,7 +34,7 @@ const products = {
     {
       "id": "PT2",
       "price": 1350,
-      "category": "PT",
+      "category": "pro",
       "img": pro2,
       "stock": 48,
       "description": "Pro Trek Series - Model 2"
@@ -79,6 +79,8 @@ export const getProductById = (productId) => {
 
 export const getProductByCategory = (categoryId) => {
   return new Promise((resolve) => {
-    resolve(products.filter(prod => prod.category === categoryId));
+    const filteredProducts = products.relojes.filter(prod => prod.category === categoryId);
+    resolve(filteredProducts);
   });
 };
+

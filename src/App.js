@@ -29,7 +29,6 @@ function App() {
             ...doc.data()
           }))
           setProducts(productsList);
-          console.log(productsList);
         } else {
           console.warn("No items found");
         }
