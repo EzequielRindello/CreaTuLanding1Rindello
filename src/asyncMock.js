@@ -1,4 +1,4 @@
-import casio1 from "./imagenes/casio1.avif"
+import casio1 from "./imagenes/casio1.png"
 import casio2 from "./imagenes/casio2.avif"
 import pro1 from "./imagenes/pro1.avif"
 import pro2 from "./imagenes/pro2.png"
@@ -70,7 +70,6 @@ export const getProducts = () => {
   });
 };
 
-
 export const getProductById = (productId) => {
   return new Promise((resolve) => {
     resolve(products.relojes.find(prod => prod.id === productId));
@@ -83,4 +82,3 @@ export const getProductByCategory = (categoryId) => {
     resolve(filteredProducts);
   });
 };
-

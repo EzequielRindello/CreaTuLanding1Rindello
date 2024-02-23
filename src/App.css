@@ -1,26 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
 
-:root {
-  /* colors 
-  --primary-color: #f0a868;
-  --secondary-color: #525b0f;
-  --tertiary-color: #a4b8c4;
-  --light-grey: #d0d0d0;
-  --dark-grey: #303030;
-  #212121 (grey)
-  
-  */
-
-  /* sizes */
-  --font-base: 18px;
-  --small-font: 16px;
-  --large-font: 36px;
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root {
+  --font-base: 18px;
+  --small-font: 16px;
+  --large-font: 36px;
 }
 
 body {
