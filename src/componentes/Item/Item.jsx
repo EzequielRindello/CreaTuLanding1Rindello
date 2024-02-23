@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Item.css"
 
-const Item = ({ id, description, price, stock, img }) => {
+const Item = ({ id, name, price, stock, img }) => {
   return (
     <article className="card-item">
       <header className="header">
-        <h4>{description}</h4>
+        <h4>{name}</h4>
       </header>
       <picture>
-        <img src={img} alt={description} className="item-img" />
+        <img src={img} alt={name} className="item-img" />
       </picture>
       <section>
         <p className="info">Precio: {price}</p>

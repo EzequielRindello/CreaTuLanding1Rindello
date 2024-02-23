@@ -3,24 +3,27 @@ import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount.jsx";
 
 const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
+
+  // implementar logica para el carrito
+
   return (
-    <article className="card-item">
+    <article className="article-card-item">
       <header className="header">
         <h2 className="item-header">{name}</h2>
       </header>
       <picture>
-        <img src={img} alt={name} className="item-img" />
+        <img src={img} alt={description} className="item-img" />
       </picture>
       <section>
         <p className="info">Categoria: {category}</p>
-        <p className="info">Descripcion:{description}</p>
-        <p className="info">Price: {price}</p>
+        <p className="info"><strong>{description}</strong></p>
+        <p className="info">Precio: {price}</p>
       </section>
       <footer className="item-footer">
         <ItemCount
           initial={1}
           stock={stock}
-          onAdd={(quantity) => console.log("cantidad agregada", quantity)}
+          onAdd={(quantity) => alert(`Elementos agregados: ${quantity} id: ${id}`)}
         />
       </footer>
     </article>
