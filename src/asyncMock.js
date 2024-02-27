@@ -4,6 +4,22 @@ import pro1 from "./imagenes/pro1.avif"
 import pro2 from "./imagenes/pro2.png"
 import gshock1 from "./imagenes/g1.avif"
 import gshock2 from "./imagenes/g2.avif"
+import { initializeApp } from "firebase/app";
+import { collection, getDocs, getFirestore, doc, setDoc } from "firebase/firestore";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBtt19Ulc66vZ_sjNBO4kJrtmu_O4ySLeA",
+  authDomain: "coderhuse-ecomerce.firebaseapp.com",
+  projectId: "coderhuse-ecomerce",
+  storageBucket: "coderhuse-ecomerce.appspot.com",
+  messagingSenderId: "31252720792",
+  appId: "1:31252720792:web:583c5056c503e49e26b4ed",
+  measurementId: "G-0GE93S716H"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const products = {
   "relojes": [
@@ -64,6 +80,30 @@ const products = {
   ]
 }
 
+
+const collectionRef = collection(db, "items");
+
+const checkCollection = async () => {
+  const querySnapshot = await getDocs(collectionRef);
+  if (querySnapshot.empty) {
+    console.log("La colección 'items' está vacía. Cargando datos...");
+    loadProducts();
+  } else {
+    return;
+  }
+};
+
+const loadProducts = () => {
+  products.relojes.forEach(reloj => {
+    const docRef = doc(collectionRef, reloj.id); 
+    setDoc(docRef, reloj)
+      .then(() => console.log(`Reloj con ID ${reloj.id} agregado a Firestore.`))
+      .catch(error => console.error(`Error al agregar el reloj con ID ${reloj.id}:`, error));
+  });
+};
+
+
+checkCollection();
 
 export const getProducts = () => {
   return new Promise((resolve) => {
