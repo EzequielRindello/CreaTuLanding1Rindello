@@ -41,7 +41,6 @@ const ModalCarrito = () => {
         cartItems.map((item, index) => (
           <div key={index}>
             <p>Nombre: {item.name}</p>
-            <p>Categoría: {item.category}</p>
             <p>Precio: {item.price}</p>
             <p>Cantidad: {item.quantity}</p>
           </div>

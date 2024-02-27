@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount.jsx";
+import Swal from "sweetalert2";
 
 const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
   const [cartItems, setCartItems] = useState([]);
@@ -24,10 +25,18 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
     const isItemInCart = cartItems.some((item) => item.id === id);
 
     if (isItemInCart) {
-      alert("Este producto ya está en el carrito.");
+      Swal.fire({
+        title: "Error",
+        text: "Este producto ya esta en el carrito",
+        icon: "error"
+    });
     } else {
       setCartItems([...cartItems, newItem]);
-      console.log("Producto agregado al carrito:", newItem);
+      Swal.fire({
+        title: "Éxito",
+        text: `Agregaste ${newItem.name} a tu carrito`,
+        icon: "success",
+      });
     }
   };
 
