@@ -35,6 +35,10 @@ a:hover {
   margin-right: 5px;
   padding: 10px;
   cursor: pointer;
+  text-decoration: none;
+}
+.cart-icon:hover {
+  text-decoration: none;
 }
 
 .cart-items {

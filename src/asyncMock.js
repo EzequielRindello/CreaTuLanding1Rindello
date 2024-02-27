@@ -21,10 +21,9 @@ const checkCollection = async () => {
   if (querySnapshot.empty) {
     console.log("La colección 'items' está vacía. Cargando datos...");
   } else {
-    console.log("La colección 'items' ya contiene datos.");
+    return;
   }
 };
-
 
 checkCollection();
 
@@ -41,9 +40,10 @@ export const getProductById = async (productId) => {
   const docRef = doc(collectionRef, productId);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
+    return docSnap.data(); // Retorna los datos si el documento existe
   } else {
     console.log("No se encontró ningún producto con el ID proporcionado.");
-    return null;
+    return null; // Retorna null si el documento no existe
   }
 };
 

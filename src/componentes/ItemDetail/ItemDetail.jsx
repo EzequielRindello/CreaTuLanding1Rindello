@@ -1,27 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount.jsx";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { app } from "../../index.js";
 
-const ItemDetail = ({ name, img, category, description, price, stock }) => {
-  const db = getFirestore(app);
+const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
+  const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = async (quantity) => {
-    try {
-      // Crear un nuevo documento en la colección "orders"
-      const docRef = await addDoc(collection(db, "orders"), {
-        itemName: name,
-        itemCategory: category,
-        itemPrice: price,
-        quantity: quantity,
-      });
-      alert(`Elementos agregados: ${quantity} - ID de orden: ${docRef.id}`);
-    } catch (error) {
-      console.error("Error al agregar la orden: ", error);
-      alert(
-        "Ocurrió un error al agregar la orden. Por favor, inténtalo de nuevo."
-      );
+  useEffect(() => {
+    // Cargar los elementos del carrito desde localStorage al montar el componente
+    const storedCartItems = localStorage.getItem("cartItems");
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Guardar los elementos del carrito en localStorage cada vez que cambian
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  const addToCart = (quantity, name, price, id) => {
+    const newItem = { id, name, price, quantity };
+
+    const isItemInCart = cartItems.some((item) => item.id === id);
+
+    if (isItemInCart) {
+      alert("Este producto ya está en el carrito.");
+    } else {
+      setCartItems([...cartItems, newItem]);
+      console.log("Producto agregado al carrito:", newItem);
     }
   };
 
@@ -34,7 +40,7 @@ const ItemDetail = ({ name, img, category, description, price, stock }) => {
         <img src={img} alt={description} className="item-img" />
       </picture>
       <section>
-        <p className="info">Categoria: {category}</p>
+        <p className="info">Categoría: {category}</p>
         <p className="info">
           <strong>{description}</strong>
         </p>
@@ -44,7 +50,7 @@ const ItemDetail = ({ name, img, category, description, price, stock }) => {
         <ItemCount
           initial={1}
           stock={stock}
-          onAdd={(quantity) => addToCart(quantity)}
+          onAdd={(quantity) => addToCart(quantity, name, price, id)}
         />
       </footer>
     </article>
