@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from "react";
+// CartWidget.js
+import React from "react";
 import { Link } from "react-router-dom";
 import "../Navbar/Navbar.css";
+import { useCart } from "../Context/CartContext.jsx";
 
 const CartWidget = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const { cartItems } = useCart();
 
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
-
-  useEffect(() => {
-    const storedCartItems = localStorage.getItem("cartItems");
-    if (storedCartItems) {
-      setCartItems(JSON.parse(storedCartItems));
-    }
-  }, []);
 
   return (
     <div className="cart-container">

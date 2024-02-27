@@ -1,43 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount.jsx";
+import { useCart } from "../Context/CartContext.jsx";
 import Swal from "sweetalert2";
 
 const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const { addToCart } = useCart();
 
-  useEffect(() => {
-    // Cargar los elementos del carrito desde localStorage al montar el componente
-    const storedCartItems = localStorage.getItem("cartItems");
-    if (storedCartItems) {
-      setCartItems(JSON.parse(storedCartItems));
-    }
-  }, []);
-
-  useEffect(() => {
-    // Guardar los elementos del carrito en localStorage cada vez que cambian
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
-
-  const addToCart = (quantity, name, price, id) => {
-    const newItem = { id, name, price, quantity };
-
-    const isItemInCart = cartItems.some((item) => item.id === id);
-
-    if (isItemInCart) {
-      Swal.fire({
-        title: "Error",
-        text: "Este producto ya esta en el carrito",
-        icon: "error"
+  const handleAddToCart = (quantity) => {
+    addToCart({ id, name, price, quantity });
+    Swal.fire({
+      title: "Éxito",
+      text: `Agregaste ${name} a tu carrito`,
+      icon: "success",
     });
-    } else {
-      setCartItems([...cartItems, newItem]);
-      Swal.fire({
-        title: "Éxito",
-        text: `Agregaste ${newItem.name} a tu carrito`,
-        icon: "success",
-      });
-    }
   };
 
   return (
@@ -56,11 +32,7 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
         <p className="info">Precio: {price}</p>
       </section>
       <footer className="item-footer">
-        <ItemCount
-          initial={1}
-          stock={stock}
-          onAdd={(quantity) => addToCart(quantity, name, price, id)}
-        />
+        <ItemCount initial={1} stock={stock} onAdd={handleAddToCart} />
       </footer>
     </article>
   );

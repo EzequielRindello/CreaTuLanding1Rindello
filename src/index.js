@@ -5,6 +5,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { CartProvider } from "./componentes/Context/CartContext.jsx";
 
 
 const firebaseConfig = {
@@ -24,7 +25,9 @@ export const data = getFirestore(app);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <App />
+   <CartProvider>
+      <App />
+    </CartProvider>
   </BrowserRouter>
 );
 

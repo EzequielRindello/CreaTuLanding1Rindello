@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { app } from "../../index.js";
+import Swal from "sweetalert2";
 
 const ModalCarrito = () => {
   const db = getFirestore(app);
@@ -14,12 +15,20 @@ const ModalCarrito = () => {
         itemPrice: cartItems.price,
         quantity: cartItems.quantity,
       });
-      alert(`Elementos agregados: ${cartItems.quantity} - ID de orden: ${docRef.id}`);
-    } catch (error) {
-      console.error("Error al agregar la orden: ", error);
       alert(
-        "Ocurrió un error al agregar la orden. Por favor, inténtalo de nuevo."
+        `Elementos agregados: ${cartItems.quantity} - ID de orden: ${docRef.id}`
       );
+      Swal.fire({
+        title: "Éxito",
+        text: `Elementos agregados: ${cartItems.quantity} - ID de orden: ${docRef.id}`,
+        icon: "info",
+      });
+    } catch (error) {
+      Swal.fire({
+        title: "Error",
+        text: `Algo inesperado ocurrio, intentalo mas tarde!`,
+        icon: "error",
+      });
     }
   };
   const [cartItems, setCartItems] = useState([]);
@@ -46,7 +55,8 @@ const ModalCarrito = () => {
           </div>
         ))
       )}
-      <button>Confirmar pedido</button>
+      {/* Pass a function reference to the onClick event handler */}
+      <button onClick={() => addToCart(cartItems)}>Confirmar pedido</button>
     </div>
   );
 };

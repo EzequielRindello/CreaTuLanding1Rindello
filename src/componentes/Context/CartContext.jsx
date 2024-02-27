@@ -1,6 +1,5 @@
 
 import React, { createContext, useState, useEffect, useContext } from "react";
-import CartWidget from "../CartWidget/CartWidget";
 
 const CartContext = createContext();
 
@@ -35,9 +34,9 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartWidget.Provider value={{ cartItems, addToCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart }}>
       {children}
-    </CartWidget.Provider>
+    </CartContext.Provider>
   );
 };
 
