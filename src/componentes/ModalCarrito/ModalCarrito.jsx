@@ -43,10 +43,16 @@ const ModalCarrito = () => {
           title: "Éxito",
           text: `ID de orden: ${docRef.id}`,
           icon: "info",
+        }).then((result) => {
+          if (
+            result.isConfirmed ||
+            result.dismiss === Swal.DismissReason.timer
+          ) {
+            setCartItems([]);
+            localStorage.removeItem("cartItems");
+            window.location.href = "https://casioe-comerce.netlify.app/";
+          }
         });
-        setCartItems([]);
-        localStorage.removeItem("cartItems");
-        window.location.href = "https://casioe-comerce.netlify.app/";
       } catch (error) {
         Swal.fire({
           title: "Error",
