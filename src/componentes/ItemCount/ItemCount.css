@@ -4,7 +4,8 @@
   cursor: pointer;
 }
 
-#cart-btn {
+#cart-btn,
+.btn-cart {
   appearance: none;
   background-color: transparent;
   border: 0.125em solid #1a1a1a;
@@ -33,18 +34,21 @@
   margin: 20px;
 }
 
-#cart-btn:disabled {
+#cart-btn:disabled,
+.btn-cart:disabled {
   pointer-events: none;
 }
 
-#cart-btn:hover {
+#cart-btn:hover,
+.btn-cart:hover {
   color: #fff;
   background-color: #1a1a1a;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
 
-#cart-btn:active {
+#cart-btn:active,
+.btn-cart:hover {
   box-shadow: none;
   transform: translateY(0);
 }
