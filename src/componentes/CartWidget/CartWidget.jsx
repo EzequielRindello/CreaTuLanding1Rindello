@@ -1,13 +1,16 @@
-// CartWidget.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../Navbar/Navbar.css";
 import { useCart } from "../Context/CartContext.jsx";
+import "../Navbar/Navbar.css";
 
 const CartWidget = () => {
   const { cartItems } = useCart();
+  const [cartCount, setCartCount] = useState(0);
 
-  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  useEffect(() => {
+    const count = cartItems.reduce((total, item) => total + item.quantity, 0);
+    setCartCount(count);
+  }, [cartItems]);
 
   return (
     <div className="cart-container">

@@ -46,6 +46,7 @@ const ModalCarrito = () => {
         });
         setCartItems([]);
         localStorage.removeItem("cartItems");
+        window.location.reload();
       } catch (error) {
         Swal.fire({
           title: "Error",
@@ -62,6 +63,7 @@ const ModalCarrito = () => {
     );
     setCartItems(updatedCartItems);
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    window.location.reload();
   };
 
   return (
@@ -79,6 +81,7 @@ const ModalCarrito = () => {
               <p>Nombre: {item.name}</p>
               <p>Precio: {item.price}</p>
               <p>Cantidad: {item.quantity}</p>
+              <p>Total:{item.quantity * item.price}</p>
               <br></br>
               <button className="btn" onClick={() => removeItem(index)}>
                 Eliminar item
