@@ -46,7 +46,7 @@ const ModalCarrito = () => {
         });
         setCartItems([]);
         localStorage.removeItem("cartItems");
-        window.location.reload();
+        window.location.href = "https://casioe-comerce.netlify.app/";
       } catch (error) {
         Swal.fire({
           title: "Error",
@@ -63,7 +63,6 @@ const ModalCarrito = () => {
     );
     setCartItems(updatedCartItems);
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-    window.location.reload();
   };
 
   return (
