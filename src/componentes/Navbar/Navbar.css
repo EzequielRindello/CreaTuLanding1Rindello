@@ -54,3 +54,14 @@ a:hover {
     width: 100px;
   }
 }
+
+@media (max-width: 640px) {
+  .categorias {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .nav {
+    height: fit-content;
+  }
+}
