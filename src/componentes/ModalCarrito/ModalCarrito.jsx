@@ -3,6 +3,7 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { app } from "../../index.js";
 import Swal from "sweetalert2";
 import "./ModalCarrito.css";
+import img from "../../imagenes/png-transparent-empty-cart.png";
 
 const ModalCarrito = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -69,6 +70,7 @@ const ModalCarrito = () => {
     );
     setCartItems(updatedCartItems);
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    window.location.href = "https://casioe-comerce.netlify.app/carrito";
   };
 
   return (
@@ -77,6 +79,7 @@ const ModalCarrito = () => {
         <div className="cartlist-container">
           <h2>Nada que mostrar aqui</h2>
           <p>No hay productos en el carrito</p>
+          <img src={img} alt="cart" />
         </div>
       ) : (
         <div className="cartlist-container">

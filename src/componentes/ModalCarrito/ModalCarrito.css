@@ -11,6 +11,10 @@
   margin-bottom: 2%;
 }
 
+.cartlist-container img{
+  width: 30%;
+}
+
 .item {
   background-color: #fff;
   border: 1px solid #d0d0d0;
